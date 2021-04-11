@@ -33,6 +33,7 @@ set sw=2
 set relativenumber
 set laststatus=2
 set cursorline
+set term=screen-256color
 
 call plug#begin('~/.vim/plugged')
 
