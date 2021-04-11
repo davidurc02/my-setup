@@ -44,7 +44,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
 Plug 'Xuyuanp/nerdtree-git-plugin' "github for nerdtree
 Plug 'airblade/vim-gitgutter' "uncommit changes markers
-" typescript syntax highlight
+"typescript syntax highlight
 "Plug 'leafgarland/typescript-vim'
 "Plug 'peitalin/vim-jsx-typescript'
 Plug 'HerringtonDarkholme/yats.vim' "
@@ -53,25 +53,16 @@ Plug 'HerringtonDarkholme/yats.vim' "
 call plug#end()
 
 colorscheme gruvbox
-"let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_dark = "hard"
 let g:coc_disable_startup_warning = 1
 set background=dark "setting dark mode
 
 let mapleader=" "
-
 nmap <Leader>nt :NERDTreeFind<CR>
 nmap <Leader>s <Plug>(easymotion-s2)
 nmap <Leader>w :w<CR> 
 nmap <Leader>q :q<CR> 
 nmap <Leader>wq :wq<CR> 
-
-""inoremap " ""<left>
-""inoremap ' ''<left>
-""inoremap ( ()<left>
-""inoremap [ []<left>
-""inoremap { {}<left>
-""inoremap {<CR> {<CR>}<ESC>O
-""inoremap {;<CR> {<CR>};<ESC>O
 
 " set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
