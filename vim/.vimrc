@@ -56,6 +56,9 @@ Plug 'airblade/vim-gitgutter' "uncommit changes markers
 "Plug 'peitalin/vim-jsx-typescript'
 Plug 'HerringtonDarkholme/yats.vim' "TypeScript Syntax Highlighting
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "Intellisense for TypeScript
+Plug 'vim-airline/vim-airline' "VIM status bar 
+Plug 'vim-airline/vim-airline-themes' "VIM status bar
+Plug 'tpope/vim-fugitive' "VIM status bar
 
 call plug#end()
 
@@ -66,6 +69,7 @@ call plug#end()
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
 let g:coc_disable_startup_warning = 1
+let g:airline_powerline_fonts = 1
 set background=dark "setting dark mode
 
 " ################################################
