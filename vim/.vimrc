@@ -40,7 +40,7 @@ set cursorline
 set term=screen-256color
 
 " ################################################
-" SECTION: PLUGINS
+" SECTION: PLUGINS PLUGGED
 " ################################################
 
 call plug#begin('~/.vim/plugged')
@@ -50,18 +50,35 @@ Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
-Plug 'Xuyuanp/nerdtree-git-plugin' "github for nerdtree
-Plug 'airblade/vim-gitgutter' "uncommit changes markers
-"typescript syntax highlight
-"Plug 'leafgarland/typescript-vim'
-"Plug 'peitalin/vim-jsx-typescript'
-Plug 'HerringtonDarkholme/yats.vim' "TypeScript Syntax Highlighting
+Plug 'Xuyuanp/nerdtree-git-plugin'		"github for nerdtree
+Plug 'airblade/vim-gitgutter'			"uncommit changes markers
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "Intellisense for TypeScript
-Plug 'vim-airline/vim-airline' "VIM status bar 
-Plug 'vim-airline/vim-airline-themes' "VIM status bar
-Plug 'tpope/vim-fugitive' "VIM status bar
+Plug 'vim-airline/vim-airline'			"VIM status bar
+Plug 'vim-airline/vim-airline-themes'		"VIM status bar
+Plug 'tpope/vim-fugitive'			"
+Plug 'HerringtonDarkholme/yats.vim'		"TypeScript Syntax Highlighting
+Plug 'yuezk/vim-js'				"JS
+Plug 'maxmellon/vim-jsx-pretty'			"JS
 
 call plug#end()
+
+" ################################################
+" SECTION: PLUGINS VUNDLE 
+" ################################################
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin('~/.vim/bundle/')
+Plugin 'chemzqm/vim-jsx-improve' "Makes your javascript files support React jsx correctly.
+"Plugin 'jiangmiao/auto-pairs'
+"Plugin 'othree/yajs.vim'
+call vundle#end()            " required
+
+filetype plugin indent on    " required
 
 " ################################################
 " SECTION: THEME
@@ -132,6 +149,16 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+autocmd VimEnter * NERDTree | wincmd p " Start NERDTree and leave the cursor in it.
+" autocmd BufWinEnter * silent NERDTreeMirror " Open the existing NERDTree on each new tab.
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+" ################################################
+" SECTION: GIT GUTTER 
+" ################################################
+
 let g:gitgutter_sign_added = '✚'
 let g:gitgutter_sign_modified = '✹'
 let g:gitgutter_sign_removed = '-'
