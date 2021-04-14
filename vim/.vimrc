@@ -24,6 +24,7 @@ set softtabstop=2	" Number of spaces per Tab
 set ruler	" Show row and column ruler information
 set undolevels=1000	" Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
+set pastetoggle=<F2>
 
 " Udemy
 set mouse=a
@@ -87,26 +88,33 @@ nmap <Leader>wq :wq<CR>
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " ################################################
+" SECTION: YATS: Yet Another TypeScript Syntax
+" ################################################
+
+let g:yats_host_keyword = 1
+set re=0
+
+" ################################################
 " SECTION: COLORES DE ALGO
 " ################################################
 
 " Set jsx-tag colors in vimrc
 " dark red
-hi tsxTagName guifg=#E06C75
-hi tsxComponentName guifg=#E06C75
-hi tsxCloseComponentName guifg=#E06C75
+"hi tsxTagName guifg=#E06C75
+"hi tsxComponentName guifg=#E06C75
+"hi tsxCloseComponentName guifg=#E06C75
 " orange
-hi tsxCloseString guifg=#F99575
-hi tsxCloseTag guifg=#F99575
-hi tsxCloseTagName guifg=#F99575
-hi tsxAttributeBraces guifg=#F99575
-hi tsxEqual guifg=#F99575
+"hi tsxCloseString guifg=#F99575
+"hi tsxCloseTag guifg=#F99575
+"hi tsxCloseTagName guifg=#F99575
+"hi tsxAttributeBraces guifg=#F99575
+"hi tsxEqual guifg=#F99575
 " yellow
-hi tsxAttrib guifg=#F8BD7F cterm=italic
+"hi tsxAttrib guifg=#F8BD7F cterm=italic
 " light-grey
-hi tsxTypeBraces guifg=#999999
+"hi tsxTypeBraces guifg=#999999
 " dark-grey
-hi tsxTypes guifg=#666666
+"hi tsxTypes guifg=#666666
 
 " ################################################
 " SECTION: NERDTREE - GITHUB - UNCOMITED CHANGES
