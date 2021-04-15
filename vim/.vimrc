@@ -47,9 +47,9 @@ call plug#begin('~/.vim/plugged')
 " Temas
 Plug 'morhetz/gruvbox'
 " Utilidades
-Plug 'scrooloose/nerdtree'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdtree'			"Files tree
+Plug 'christoomey/vim-tmux-navigator'		"Improved navigation on Tmux???
+Plug 'easymotion/vim-easymotion'		"Improved navigation
 Plug 'Xuyuanp/nerdtree-git-plugin'		"github for nerdtree
 Plug 'airblade/vim-gitgutter'			"uncommit changes markers
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "Intellisense for TypeScript
@@ -59,7 +59,7 @@ Plug 'tpope/vim-fugitive'			"
 Plug 'HerringtonDarkholme/yats.vim'		"TypeScript Syntax Highlighting
 Plug 'yuezk/vim-js'				"JS
 Plug 'maxmellon/vim-jsx-pretty'			"JS
-
+Plug 'ctrlpvim/ctrlp.vim'			"Fuzzy search by pressing Ctrl+P
 call plug#end()
 
 " ################################################
@@ -73,9 +73,9 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin('~/.vim/bundle/')
-Plugin 'chemzqm/vim-jsx-improve' "Makes your javascript files support React jsx correctly.
-"Plugin 'jiangmiao/auto-pairs'
-"Plugin 'othree/yajs.vim'
+Plugin 'chemzqm/vim-jsx-improve'		"Makes your javascript files support React jsx correctly.
+Plugin 'jiangmiao/auto-pairs'			"Automatically add closing brackets, quotes, etc
+"Plugin 'othree/yajs.vim'			"TypeScript syntax
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -112,28 +112,6 @@ let g:yats_host_keyword = 1
 set re=0
 
 " ################################################
-" SECTION: COLORES DE ALGO
-" ################################################
-
-" Set jsx-tag colors in vimrc
-" dark red
-"hi tsxTagName guifg=#E06C75
-"hi tsxComponentName guifg=#E06C75
-"hi tsxCloseComponentName guifg=#E06C75
-" orange
-"hi tsxCloseString guifg=#F99575
-"hi tsxCloseTag guifg=#F99575
-"hi tsxCloseTagName guifg=#F99575
-"hi tsxAttributeBraces guifg=#F99575
-"hi tsxEqual guifg=#F99575
-" yellow
-"hi tsxAttrib guifg=#F8BD7F cterm=italic
-" light-grey
-"hi tsxTypeBraces guifg=#999999
-" dark-grey
-"hi tsxTypes guifg=#666666
-
-" ################################################
 " SECTION: NERDTREE - GITHUB - UNCOMITED CHANGES
 " ################################################
 
@@ -149,11 +127,15 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+" autocmd VimEnter * NERDTree | wincmd p " Start NERDTree and leave the cursor in it.
 
-autocmd VimEnter * NERDTree | wincmd p " Start NERDTree and leave the cursor in it.
-" autocmd BufWinEnter * silent NERDTreeMirror " Open the existing NERDTree on each new tab.
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+" let NERDTreeShowHidden=1 			"Shift+i does the trick
 
 " ################################################
 " SECTION: GIT GUTTER 
@@ -164,6 +146,12 @@ let g:gitgutter_sign_modified = '✹'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = '-'
 let g:gitgutter_sign_modified_removed = '-'
+
+" ################################################
+" SECTION: CTRLP - FUZZY SEARCH
+" ################################################
+
+set wildignore+=*/tmp/*,*.so,*.swp,*/node_modules/*
 
 " ################################################
 " SECTION: COC.VIM CONFIGURATION
