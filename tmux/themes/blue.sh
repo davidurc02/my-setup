@@ -1,3 +1,14 @@
+#  modes
+setw -g clock-mode-colour colour5
+setw -g mode-style 'fg=colour1 bg=colour18 bold'
+
+# panes
+set -g pane-border-style 'fg=colour19 bg=colour0'
+set -g pane-active-border-style 'bg=colour0 fg=colour9'
+
+# messages
+set -g message-style 'fg=colour232 bg=colour16 bold'
+
 #
 # Powerline Double Blue - Tmux Themepack
 # https://github.com/jimeh/tmux-themepack
